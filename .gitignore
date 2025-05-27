@@ -1,8 +1,7 @@
 # Node modules
 node_modules/
 
-# Build output
-dist/
+# Build output. We need dist to be available though
 build/
 out/
 

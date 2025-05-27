@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SystemJS ESM Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.14.1/dist/system.min.js"></script>
+</head>
+<body>
+  <h1>SystemJS Test</h1>
+  <div id="status">Loading...</div>
+
+  <script type="module">
+    window.System.import('https://cdn.jsdelivr.net/gh/codehippie1/esm-components/dist/fancy-button.js')
+      .then(mod => console.log('✅ Success:', mod))
+      .catch(err => console.error('❌ Failed:', err));
+  </script>
+</body>
+</html>

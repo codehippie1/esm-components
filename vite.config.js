@@ -1,23 +1,24 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
       entry: 'src/FancyButton.jsx',
-      name: 'FancyButton',
-      fileName: () => 'fancy-button.js',
-      formats: ['es'], // ESM output
+      formats: ['es'], // ✅ Ensure ESM output
+      fileName: 'fancy-button',
     },
     rollupOptions: {
+      // ✅ Do not bundle these
       external: ['react', 'react-dom'],
       output: {
+        // ✅ Global fallback names for excluded packages (used only in UMD, but good to include)
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    }
-  }
+          'react-dom': 'ReactDOM',
+        },
+      },
+    },
+  },
 });

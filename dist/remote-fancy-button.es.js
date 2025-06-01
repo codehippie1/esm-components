@@ -1,4 +1,4 @@
-import d from "https://esm.sh/react@17.0.2";
+import d from "https://esm.sh/react@17.0.2?dev";
 var h = { exports: {} }, f = {};
 /*
 object-assign
@@ -143,3 +143,4 @@ const T = {
 export {
   B as default
 };
+//# sourceMappingURL=remote-fancy-button.es.js.map

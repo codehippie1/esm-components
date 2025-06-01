@@ -5,9 +5,8 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   define: {
-    'process.env.NODE_ENV': JSON.stringify('production'),
-    'process.env': '{}',
-    'process': 'null'
+    'process.env.NODE_ENV': '"production"',
+    global: 'globalThis',
   },
   build: {
     lib: {
@@ -24,10 +23,12 @@ export default defineConfig({
           'react-dom': 'ReactDOM'
         },
         paths: {
-          react: 'https://esm.sh/react@17.0.2',
-          'react-dom': 'https://esm.sh/react-dom@17.0.2'
+          react: 'https://esm.sh/react@17.0.2?dev',
+          'react-dom': 'https://esm.sh/react-dom@17.0.2?dev'
         }
       }
-    }
+    },
+    minify: 'esbuild',
+    sourcemap: true,
   },
 }); 

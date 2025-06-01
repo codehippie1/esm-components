@@ -1,4 +1,5 @@
-import React, { useState, CSSProperties } from 'react';
+import React from 'react';
+import type { ReactNode, MouseEvent, CSSProperties } from 'react';
 
 interface RippleStyle extends CSSProperties {
   left: number;
@@ -16,8 +17,8 @@ interface Ripple {
 }
 
 interface RemoteFancyButtonProps {
-  children?: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: ReactNode;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   [key: string]: any;
 }
@@ -56,10 +57,10 @@ const RemoteFancyButton: React.FC<RemoteFancyButtonProps> = ({
   className = '',
   ...props 
 }) => {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const [isHovered, setIsHovered] = React.useState<boolean>(false);
+  const [ripples, setRipples] = React.useState<Ripple[]>([]);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.currentTarget;
     const diameter = Math.max(button.clientWidth, button.clientHeight);
     const radius = diameter / 2;

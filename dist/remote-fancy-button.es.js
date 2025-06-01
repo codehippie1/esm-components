@@ -1,4 +1,4 @@
-import d from "https://esm.sh/react@17.0.2?dev";
+import d from "https://esm.sh/stable/react@17.0.2/es2021/react.js";
 var h = { exports: {} }, f = {};
 /*
 object-assign

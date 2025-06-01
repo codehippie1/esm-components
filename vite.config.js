@@ -13,7 +13,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/RemoteFancyButton.tsx'),
       name: 'RemoteFancyButton',
       fileName: (format) => `remote-fancy-button.${format}.js`,
-      formats: ['es']
+      formats: ['iife']
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

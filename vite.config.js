@@ -18,15 +18,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom'],
       output: {
-        format: 'es',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'
-        },
-        inlineDynamicImports: true,
-        paths: {
-          react: 'https://esm.sh/stable/react@17.0.2/es2021/react.js',
-          'react-dom': 'https://esm.sh/stable/react-dom@17.0.2/es2021/react-dom.js'
         }
       }
     },

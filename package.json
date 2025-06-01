@@ -1,18 +1,34 @@
 {
-  "name": "esm-fancy-button",
-  "type": "module",
+  "name": "remote-fancy-button",
   "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/remote-fancy-button.umd.js",
+  "module": "./dist/remote-fancy-button.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/remote-fancy-button.es.js",
+      "require": "./dist/remote-fancy-button.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^5.0.0"
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.0.2",
+    "vite": "^5.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
-}
+} 

@@ -1,4 +1,4 @@
-import Ce, { useState as we } from "react";
+import Ce, { useState as we } from "https://esm.sh/react@17.0.2";
 var X = { exports: {} }, I = {};
 /*
 object-assign

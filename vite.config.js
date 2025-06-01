@@ -9,15 +9,20 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/RemoteFancyButton.tsx'),
       name: 'RemoteFancyButton',
       fileName: (format) => `remote-fancy-button.${format}.js`,
+      formats: ['es']
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM',
+          'react-dom': 'ReactDOM'
         },
-      },
-    },
+        paths: {
+          react: 'https://esm.sh/react@17.0.2',
+          'react-dom': 'https://esm.sh/react-dom@17.0.2'
+        }
+      }
+    }
   },
 }); 

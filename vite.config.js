@@ -10,9 +10,9 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/RemoteFancyButton.tsx'),
-      name: 'RemoteFancyButton',
-      fileName: (format) => `remote-fancy-button.${format}.js`,
+      entry: resolve(__dirname, 'src/RemotePropertyList.tsx'),
+      name: 'RemotePropertyList',
+      fileName: (format) => `remote-property-list.${format}.js`,
       formats: ['iife']
     },
     rollupOptions: {

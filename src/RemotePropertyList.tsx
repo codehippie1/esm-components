@@ -5,7 +5,12 @@ interface Property {
   id: string;
   name: string;
   squareFeet: number;
-  location: string;
+  location: {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
   imageUrl: string;
   available: string;
   yearBuilt: number;
@@ -19,7 +24,12 @@ const mockProperties: Property[] = [
     id: '1',
     name: 'Crossroads Distribution Center',
     squareFeet: 250000,
-    location: 'Dallas, TX',
+    location: {
+      street: '2500 Stemmons Freeway',
+      city: 'Dallas',
+      state: 'TX',
+      zip: '75207'
+    },
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+1',
     available: 'Immediately',
     yearBuilt: 2020,
@@ -31,7 +41,12 @@ const mockProperties: Property[] = [
     id: '2',
     name: 'Gateway Industrial Park',
     squareFeet: 180000,
-    location: 'Phoenix, AZ',
+    location: {
+      street: '4747 E Van Buren Street',
+      city: 'Phoenix',
+      state: 'AZ',
+      zip: '85008'
+    },
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+2',
     available: 'Q2 2024',
     yearBuilt: 2021,
@@ -43,7 +58,12 @@ const mockProperties: Property[] = [
     id: '3',
     name: 'Riverside Logistics Center',
     squareFeet: 320000,
-    location: 'Atlanta, GA',
+    location: {
+      street: '1100 Howell Mill Road',
+      city: 'Atlanta',
+      state: 'GA',
+      zip: '30318'
+    },
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+3',
     available: 'Q3 2024',
     yearBuilt: 2019,
@@ -66,6 +86,10 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  const formatAddress = (location: Property['location']) => {
+    return `${location.street}, ${location.city}, ${location.state} ${location.zip}`;
+  };
+
   return (
     <div className={`max-w-7xl mx-auto ${className}`}>
       <h2 className="text-3xl font-bold text-gray-800 mb-8 pb-4 border-b border-gray-200">
@@ -86,9 +110,12 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold text-gray-800 mb-1">
                 {property.name}
               </h3>
+              <p className="text-gray-500 text-sm mb-4 italic">
+                {formatAddress(property.location)}
+              </p>
               <div className="space-y-2 text-gray-600">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Buildings:</span>
@@ -97,10 +124,6 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Square Feet:</span>
                   <span>{formatNumber(property.squareFeet)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">Location:</span>
-                  <span>{property.location}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Available:</span>
@@ -124,7 +147,7 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
                   className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-200"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.open(`https://maps.google.com/?q=${encodeURIComponent(property.location)}`, '_blank');
+                    window.open(`https://maps.google.com/?q=${encodeURIComponent(formatAddress(property.location))}`, '_blank');
                   }}
                 >
                   View on Map

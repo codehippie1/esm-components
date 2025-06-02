@@ -10,6 +10,7 @@ interface Property {
   available: string;
   yearBuilt: number;
   clearHeight: string;
+  truckCourtDepth: string;
 }
 
 const mockProperties: Property[] = [
@@ -21,7 +22,8 @@ const mockProperties: Property[] = [
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+1',
     available: 'Immediately',
     yearBuilt: 2020,
-    clearHeight: '36\''
+    clearHeight: '36\'',
+    truckCourtDepth: '135\'-185\''
   },
   {
     id: '2',
@@ -31,7 +33,8 @@ const mockProperties: Property[] = [
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+2',
     available: 'Q2 2024',
     yearBuilt: 2021,
-    clearHeight: '32\''
+    clearHeight: '32\'',
+    truckCourtDepth: '130\'-175\''
   },
   {
     id: '3',
@@ -41,7 +44,8 @@ const mockProperties: Property[] = [
     imageUrl: 'https://placehold.co/600x400/e2e8f0/475569?text=Warehouse+3',
     available: 'Q3 2024',
     yearBuilt: 2019,
-    clearHeight: '40\''
+    clearHeight: '40\'',
+    truckCourtDepth: '140\'-190\''
   }
 ];
 
@@ -101,6 +105,10 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Clear Height:</span>
                   <span>{property.clearHeight}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="font-medium">Truck Court Depth:</span>
+                  <span>{property.truckCourtDepth}</span>
                 </div>
               </div>
               <div className="mt-4 pt-4 border-t border-gray-100">

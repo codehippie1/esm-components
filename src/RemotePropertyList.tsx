@@ -11,6 +11,7 @@ interface Property {
   yearBuilt: number;
   clearHeight: string;
   truckCourtDepth: string;
+  buildings: number;
 }
 
 const mockProperties: Property[] = [
@@ -23,7 +24,8 @@ const mockProperties: Property[] = [
     available: 'Immediately',
     yearBuilt: 2020,
     clearHeight: '36\'',
-    truckCourtDepth: '135\'-185\''
+    truckCourtDepth: '135\'-185\'',
+    buildings: 3
   },
   {
     id: '2',
@@ -34,7 +36,8 @@ const mockProperties: Property[] = [
     available: 'Q2 2024',
     yearBuilt: 2021,
     clearHeight: '32\'',
-    truckCourtDepth: '130\'-175\''
+    truckCourtDepth: '130\'-175\'',
+    buildings: 1
   },
   {
     id: '3',
@@ -45,7 +48,8 @@ const mockProperties: Property[] = [
     available: 'Q3 2024',
     yearBuilt: 2019,
     clearHeight: '40\'',
-    truckCourtDepth: '140\'-190\''
+    truckCourtDepth: '140\'-190\'',
+    buildings: 5
   }
 ];
 
@@ -60,6 +64,10 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
 }) => {
   const formatNumber = (num: number) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const formatBuildings = (num: number) => {
+    return num === 1 ? '1 Building' : `${num} Buildings`;
   };
 
   return (
@@ -86,6 +94,10 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
                 {property.name}
               </h3>
               <div className="space-y-2 text-gray-600">
+                <div className="flex justify-between items-center">
+                  <span className="font-medium">Buildings:</span>
+                  <span>{formatBuildings(property.buildings)}</span>
+                </div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Square Feet:</span>
                   <span>{formatNumber(property.squareFeet)}</span>

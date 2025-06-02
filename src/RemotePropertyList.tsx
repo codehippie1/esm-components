@@ -66,10 +66,6 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const formatBuildings = (num: number) => {
-    return num === 1 ? '1 Building' : `${num} Buildings`;
-  };
-
   return (
     <div className={`max-w-7xl mx-auto ${className}`}>
       <h2 className="text-3xl font-bold text-gray-800 mb-8 pb-4 border-b border-gray-200">
@@ -96,7 +92,7 @@ const RemotePropertyList: React.FC<RemotePropertyListProps> = ({
               <div className="space-y-2 text-gray-600">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Buildings:</span>
-                  <span>{formatBuildings(property.buildings)}</span>
+                  <span>{property.buildings}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Square Feet:</span>
